@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Insurance Decoded - Health Centers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide {
+            background: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 600px;
+            page-break-after: always;
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #009D4F;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #009D4F;
+            font-size: 36px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #009D4F;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #013220;
+            font-size: 28px;
+            margin: 20px 0 15px 0;
+        }
+        
+        h4 {
+            color: #009D4F;
+            font-size: 22px;
+            margin: 15px 0 10px 0;
+        }
+        
+        .subtitle {
+            color: #4b5563;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .card {
+            background: #f3f4f6;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #009D4F;
+        }
+        
+        .card-blue {
+            background: #EBE9F3;
+            border-left-color: #013220;
+        }
+        
+        .card-green {
+            background: #e8f5e9;
+            border-left-color: #009D4F;
+        }
+        
+        .card-red {
+            background: #fee2e2;
+            border-left-color: #ef4444;
+        }
+        
+        .card-yellow {
+            background: #fef3c7;
+            border-left-color: #f59e0b;
+        }
+        
+        .highlight-box {
+            background: #EBE9F3;
+            border: 2px solid #009D4F;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-size: 20px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            background: #009D4F;
+            color: white;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .stat-number {
+            font-size: 56px;
+            font-weight: bold;
+            color: #EAE0CC;
+        }
+        
+        .stat-label {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        ul, ol {
+            margin: 20px 0 20px 40px;
+            line-height: 1.8;
+        }
+        
+        li {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+        
+        .bullet-large li {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+        
+        th {
+            background: #009D4F;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 18px;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 16px;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .icon-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .icon-list li:before {
+            content: "✓";
+            color: #009D4F;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .warning-list li:before {
+            content: "⚠ ";
+            color: #f59e0b;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        
+        .key-takeaway {
+            background: #009D4F;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .emphasis {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        
+        .seedpod-logo {
+            max-width: 400px;
+            margin: 40px auto;
+            display: block;
+        }
+        
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            border-radius: 50px;
+            z-index: 1000;
+        }
+        
+        .nav-btn {
+            background: #009D4F;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background: #00b359;
+            transform: scale(1.05);
+        }
+        
+        .nav-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .slide-counter {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .click-hint {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: rgba(0, 157, 79, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            animation: pulse 2s infinite;
+            z-index: 999;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        @media print {
+            .slide {
+                page-break-after: always;
+                margin: 0;
+                display: block !important;
+            }
+            .nav-controls, .click-hint {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        
+        <!-- SLIDE 1: TITLE -->
+        <div class="slide">
+            <div class="center" style="padding-top: 80px;">
+                <img src="https://seedpodcyber.com/wp-content/uploads/2024/10/SeedPod_Logo__2_color_w_Tag-copy-1.png" alt="SeedPod Cyber Logo" style="width:400px;height:auto;">
+                <div style="margin-top: 60px;">
+                    <h1 style="font-size: 56px; color: #009D4F;">Cyber Insurance Decoded</h1>
+                    <p class="subtitle" style="font-size: 32px;">Coverage, Risk Reduction, and Cost-Saving Tactics for Health Centers</p>
+                </div>
+                <div style="margin-top: 80px;">
+                    <p style="font-size: 24px; color: #6b7280;">Presented to</p>
+                    <p style="font-size: 28px; color: #009D4F; font-weight: 600; margin-top: 10px;">Community Health Center Association of Connecticut</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: AGENDA -->
+        <div class="slide">
+            <h2>Today's Agenda</h2>
+            <div class="grid-2">
+                <div class="card card-blue">
+                    <h3>1. Understanding Cyber Insurance</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">What it is and why health centers need it</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>2. Market Trends in Healthcare</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">Current landscape, pricing, and emerging threats</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>3. Essential Coverage Components</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">What your policy should include</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>4. Appropriate Coverage Limits</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">How much coverage do you need?</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>5. Security Controls & Best Pricing</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">Reducing costs through risk management</p>
+                </div>
+                <div class="card card-blue">
+                    <h3>6. Key Takeaways</h3>
+                    <p style="font-size: 18px; margin-top: 10px;">Action items for your organization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: WHAT IS CYBER INSURANCE -->
+        <div class="slide">
+            <h2>What is Cyber Insurance?</h2>
+            <div class="highlight-box">
+                <strong>Definition:</strong> Cyber insurance is a specialized insurance product designed to protect healthcare organizations from internet-based risks, data breaches, and technology-related incidents that can compromise patient data and operational integrity.
+            </div>
+            
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="card card-green">
+                    <h4>First-Party Coverage</h4>
+                    <p style="margin-top: 10px; font-size: 16px;">Covers direct losses to your organization:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Business interruption</li>
+                        <li>Data recovery costs</li>
+                        <li>Ransom payments</li>
+                        <li>Crisis management</li>
+                        <li>Forensic investigation</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-blue">
+                    <h4>Third-Party Coverage</h4>
+                    <p style="margin-top: 10px; font-size: 16px;">Covers liability to others:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Legal defense costs</li>
+                        <li>Regulatory fines (HIPAA)</li>
+                        <li>Notification costs</li>
+                        <li>Credit monitoring</li>
+                        <li>Privacy liability claims</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: WHY HEALTH CENTERS NEED IT -->
+        <div class="slide">
+            <h2>Why Health Centers Need Cyber Insurance</h2>
+            
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-number">77%</div>
+                    <div class="stat-label">of Healthcare breaches in DBIR 2025</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$1.5M</div>
+                    <div class="stat-label">Median healthcare ransomware loss</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3>Healthcare Organizations Are Prime Targets</h3>
+                <ul class="bullet-large warning-list">
+                    <li>Protected Health Information (PHI) is highly valuable on dark web</li>
+                    <li>Medical devices and legacy systems create vulnerabilities</li>
+                    <li>Time-sensitive operations make ransomware effective</li>
+                    <li>HIPAA violations carry significant penalties</li>
+                    <li>Third-party vendor risks (billing, EHR, etc.)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: RECENT TRENDS - THREAT LANDSCAPE -->
+        <div class="slide">
+            <h2>Recent Cyber Threats in Healthcare</h2>
+            
+            <h3>2024-2025 Threat Landscape</h3>
+            
+            <div class="card card-red" style="margin: 20px 0;">
+                <h4>🎯 Ransomware Dominance</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>44% of all breaches</strong> involved ransomware (up from 32%)</li>
+                    <li>Healthcare specifically targeted by 8Base, Black Basta, and LockBit groups</li>
+                    <li>Median time to detect: 32 days</li>
+                </ul>
+            </div>
+            
+            <div class="card card-yellow" style="margin: 20px 0;">
+                <h4>🔐 Credential Theft & Phishing</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>22% of breaches</strong> from stolen credentials</li>
+                    <li>15% from phishing attacks targeting healthcare staff</li>
+                    <li>Infostealer malware capturing login credentials</li>
+                </ul>
+            </div>
+            
+            <div class="card card-yellow" style="margin: 20px 0;">
+                <h4>⚡ Vulnerability Exploitation</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>20% of breaches</strong> from exploited vulnerabilities</li>
+                    <li>VPN and edge device vulnerabilities frequently targeted</li>
+                    <li>Zero-day exploits with median 5-day window</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: MARKETING/TRACKING PIXELS -->
+        <div class="slide">
+            <h2>Emerging Concern: Marketing & Tracking Pixels</h2>
+            
+            <div class="highlight-box" style="background: #fee2e2; border-color: #ef4444;">
+                <strong>⚠️ Critical Issue:</strong> Healthcare organizations using tracking pixels (Meta Pixel, Google Analytics) on patient portals and appointment scheduling pages may be inadvertently sharing PHI with third parties.
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3>Why This Matters</h3>
+                <div class="grid-2" style="margin-top: 20px;">
+                    <div class="card">
+                        <h4>Regulatory Risk</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>OCR investigating violations</li>
+                            <li>Potential HIPAA penalties</li>
+                            <li>Class action lawsuits filed</li>
+                            <li>FTC enforcement actions</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Data Exposed</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>IP addresses</li>
+                            <li>Appointment types</li>
+                            <li>Medical conditions</li>
+                            <li>User behavior on health pages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-takeaway" style="margin-top: 30px;">
+                <strong>Action Item:</strong> Audit all third-party tracking technologies on your websites and patient portals immediately.
+            </div>
+        </div>
+
+        <!-- SLIDE 6B: THIRD-PARTY RISK AS THREAT VECTOR -->
+        <div class="slide">
+            <h2>The Growing Third-Party Risk Threat</h2>
+            
+            <div class="stat-box">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">of breaches involved third-party involvement (2024 DBIR)</div>
+                <p style="margin-top: 15px; font-size: 18px;">Doubled from 15% in 2023</p>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3>Why Third-Party Attacks Are Surging</h3>
+                <div class="grid-2">
+                    <div class="card card-red">
+                        <h4>Attack Advantages for Criminals</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>One breach = many victims:</strong> Compromise one vendor, access hundreds of health centers</li>
+                            <li><strong>Weaker security:</strong> Vendors often have fewer resources for cybersecurity</li>
+                            <li><strong>Trusted access:</strong> Vendors bypass perimeter defenses with legitimate credentials</li>
+                            <li><strong>Limited visibility:</strong> You can't monitor vendor networks</li>
+                            <li><strong>Shared responsibility confusion:</strong> Gaps in who secures what</li>
+                        </ul>
+                    </div>
+                    <div class="card card-yellow">
+                        <h4>Your Vulnerable Vendors</h4>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>EHR/Practice Management</strong></li>
+                            <li><strong>Billing/Revenue Cycle</strong></li>
+                            <li><strong>Medical Device Vendors</strong></li>
+                            <li><strong>IT Managed Service Providers</strong></li>
+                            <li><strong>Cloud Hosting/Storage</strong></li>
+                            <li><strong>Telehealth Platforms</strong></li>
+                            <li><strong>HVAC/Building Management</strong></li>
+                            <li><strong>Email/Communication Tools</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6C: THIRD-PARTY BREACH EXAMPLES -->
+        <div class="slide">
+            <h2>Major Third-Party Healthcare Breaches</h2>
+            
+            <h3>Recent High-Impact Vendor Breaches</h3>
+            
+            <div class="card card-red" style="margin: 20px 0;">
+                <h4>🏥 Change Healthcare (February 2024)</h4>
+                <div class="grid-2" style="margin-top: 15px;">
+                    <div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Vendor Type:</strong> Claims clearinghouse/billing</li>
+                            <li><strong>Attack:</strong> Ransomware (BlackCat/ALPHV)</li>
+                            <li><strong>Impact:</strong> 100M+ patient records exposed</li>
+                            <li><strong>Duration:</strong> Weeks of system disruption</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Affected Organizations:</strong> Thousands of providers nationwide</li>
+                            <li><strong>Financial Impact:</strong> Estimated $2.3+ billion in total losses</li>
+                            <li><strong>Root Cause:</strong> Lack of MFA on critical system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card card-red" style="margin: 20px 0;">
+                <h4>💊 MOVEit File Transfer Vulnerability (2023)</h4>
+                <div class="grid-2" style="margin-top: 15px;">
+                    <div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Vendor Type:</strong> File transfer software</li>
+                            <li><strong>Attack:</strong> Zero-day exploitation</li>
+                            <li><strong>Impact:</strong> 2,000+ organizations globally</li>
+                            <li><strong>Healthcare Victims:</strong> 600+ providers</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Records Exposed:</strong> 77M+ individuals</li>
+                            <li><strong>Notable Victims:</strong> Colorado Dept. of Health Care, Maximus, Genworth</li>
+                            <li><strong>Root Cause:</strong> Software vulnerability in widely-used tool</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card card-red" style="margin: 20px 0;">
+                <h4>🔒 Other Notable Healthcare Vendor Breaches (2023-2024)</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>CDK Global:</strong> Auto dealership software - healthcare billing clients affected</li>
+                    <li><strong>Blue Yonder:</strong> Supply chain software - impacted Starbucks and multiple pharmacies/retailers</li>
+                    <li><strong>Cleo File Transfer:</strong> 60+ organizations, ongoing extortion threats</li>
+                    <li><strong>PharMerica:</strong> Pharmacy services - 5.8M patients exposed</li>
+                </ul>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Pattern:</strong> In each case, health centers had no direct control over security but suffered major operational disruption and patient data exposure.
+            </div>
+             <div class="key-takeaway" style="margin-top: 30px;">
+                <strong>Pro Tip:</strong> Given the Change Healthcare and MOVEit incidents, carriers are scrutinizing third-party risk more carefully. Strong vendor management programs can improve your insurability.
+            </div>
+        </div>
+
+        <!-- SLIDE 7: HEALTHCARE CLAIMS DATA -->
+        <div class="slide">
+            <h2>Real Healthcare Claims Data</h2>
+            <p style="font-size: 18px; color: #666; margin-bottom: 30px;">Organizations under $300M revenue (2023)</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Attack Type</th>
+                        <th>Data Type</th>
+                        <th>Loss Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ransomware</td>
+                        <td>PII</td>
+                        <td><strong>$1,831,000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware</td>
+                        <td>PHI</td>
+                        <td><strong>$1,500,000</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Wire Transfer Fraud</td>
+                        <td>Unknown</td>
+                        <td><strong>$688,954</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware</td>
+                        <td>Unknown</td>
+                        <td><strong>$536,425</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Ransomware</td>
+                        <td>PHI</td>
+                        <td><strong>$507,236</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Multiple Claims</td>
+                        <td>PHI</td>
+                        <td><strong>$100,000 each</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Business Email Compromise</td>
+                        <td>Financial</td>
+                        <td><strong>$19,928 - $81,704</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="highlight-box" style="margin-top: 30px;">
+                <strong>Key Insight:</strong> Claims range from $20K to $1.8M+, with the median healthcare breach significantly higher than other sectors due to PHI sensitivity and regulatory requirements.
+            </div>
+        </div>
+
+        <!-- SLIDE 8: MARKET PRICING -->
+        <div class="slide">
+            <h2>Cyber Insurance Market Pricing</h2>
+            
+            
+            <h3 style="margin-top: 40px;">Premium Pricing Factors</h3>
+            <div class="grid-2" style="margin-top: 20px;">
+                <div class="card card-blue">
+                    <h4>Organization Size</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Revenue: $5M-$50M</li>
+                        <li>Employee count: 50-500</li>
+                        <li>Patient records: 10K-100K</li>
+                    </ul>
+                </div>
+                <div class="card card-blue">
+                    <h4>Typical Premium Range</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>$5K-$15K per $1M coverage annually</strong></li>
+                        <li>$2-5 per patient record</li>
+                        <li>Higher for poor security posture</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card card-yellow" style="margin-top: 30px;">
+                <h4>⚠️ Price Increases When You Have:</h4>
+                <ul class="warning-list" style="margin-left: 0;">
+                    <li>No MFA on email and VPN</li>
+                    <li>Unpatched systems or outdated software</li>
+                    <li>No endpoint detection and response (EDR)</li>
+                    <li>Poor backup procedures</li>
+                    <li>Previous cyber incidents</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: COVERAGE LIMITS -->
+        <div class="slide">
+            <h2>Appropriate Coverage Limits</h2>
+            
+            <h3>How Much Coverage Do You Need?</h3>
+            
+            <table style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th>Organization Size</th>
+                        <th>Patient Records</th>
+                        <th>Recommended Limit</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Small Health Center</td>
+                        <td>5K-15K</td>
+                        <td><strong>$1M-$2M</strong></td>
+                        <td>Basic breach response + notification</td>
+                    </tr>
+                    <tr>
+                        <td>Medium Health Center</td>
+                        <td>15K-50K</td>
+                        <td><strong>$2M-$5M</strong></td>
+                        <td>Covers ransomware + interruption</td>
+                    </tr>
+                    <tr>
+                        <td>Large Health Center</td>
+                        <td>50K-100K</td>
+                        <td><strong>$5M-$10M</strong></td>
+                        <td>Comprehensive coverage + litigation</td>
+                    </tr>
+                    <tr>
+                        <td>Multi-Site Network</td>
+                        <td>100K+</td>
+                        <td><strong>$10M-$25M</strong></td>
+                        <td>Enterprise risk exposure</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="card card-yellow" style="margin-top: 30px;">
+                <h4>Key Considerations for Limit Selection:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Notification Costs:</strong> $3-5 per patient × patient count</li>
+                    <li><strong>Business Interruption:</strong> Daily revenue × 14-30 days</li>
+                    <li><strong>Ransom Exposure:</strong> $100K-$500K typical for health centers</li>
+                    <li><strong>Legal/Regulatory:</strong> $250K to $1M minimum</li>
+                    <li><strong>Privacy / Wrongful Collection</strong> $1M minimum</li>
+                    <li><strong>Reputation/PR:</strong> $100K-$250K minimum</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: SUBLIMITS TO WATCH -->
+        <div class="slide">
+            <h2>Important Sublimits & Policy Terms</h2>
+            
+            <div class="highlight-box" style="background: #fee2e2; border-color: #ef4444;">
+                <strong>⚠️ Warning:</strong> Many policies have sublimits that cap specific coverages below the main policy limit. Always review these carefully!
+            </div>
+            
+            <h3 style="margin-top: 30px;">Critical Sublimits to Negotiate</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Coverage Area</th>
+                        <th>Common Sublimit</th>
+                        <th>Recommended Minimum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ransomware/Extortion</td>
+                        <td>$250K-$500K</td>
+                        <td><strong>$1M or policy limit</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Business Interruption</td>
+                        <td>$500K or 60 days</td>
+                        <td><strong>$1M or policy limit</strong></td>
+                    </tr>
+                    <tr style="background: #fee2e2;">
+                        <td><strong>Contingent Business Interruption</strong></td>
+                        <td><strong>$100K-$250K</strong></td>
+                        <td><strong>$500K-$2M (CRITICAL!)</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Breach Response (IR/Legal)</td>
+                        <td>$250K</td>
+                        <td><strong>$500K-$1M</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Regulatory Fines/Penalties</td>
+                        <td>$100K-$250K</td>
+                        <td><strong>$1M or policy limit</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Privacy / Wrongful Collection</td>
+                        <td>$100K-$250K</td>
+                        <td><strong>$1M or policy limit</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Social Engineering Fraud</td>
+                        <td>$100K</td>
+                        <td><strong>$250K minimum</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="card card-red" style="margin-top: 30px;">
+                <h4>Also Watch For:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Waiting Periods:</strong> Business interruption often has 8-24 hour waiting period</li>
+                    <li><strong>CBI Waiting Period:</strong> Should be <8 hours given critical vendor dependencies</li>
+                    <li><strong>Retroactive Date:</strong> Can exclude coverage for known vulnerabilities</li>
+                    <li><strong>Definition of "Ransomware":</strong> Some exclude data-only extortion</li>
+                    <li><strong>Make sure business interruption includes coverage for systems failure (both BI and CBI)</strong></li>
+                    <li><strong>Make sure wrongful collection is defined and includes actions by employees and subcontractors</strong></li>
+                    <li><strong>Named vs. Unnamed Vendors:</strong> CBI should cover unnamed third parties</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SLIDE 14: SECURITY CONTROLS OVERVIEW -->
+        <div class="slide">
+            <h2>Security Controls = Better Pricing</h2>
+            
+            <div class="highlight-box">
+                <strong>Core Principle:</strong> Implementing strong cybersecurity controls can reduce premiums by 20-50% and significantly improve coverage terms.
+            </div>
+            
+            <h3 style="margin-top: 30px;">The Essential Controls Carriers Require</h3>
+            
+            <div class="grid-2" style="margin-top: 20px;">
+                <div class="card card-green">
+                    <h4>✓ Must-Have Controls</h4>
+                    <p style="margin-top: 10px; font-size: 16px;">Required by virtually all carriers:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Multi-Factor Authentication (MFA)</li>
+                        <li>Endpoint Detection & Response (EDR)</li>
+                        <li>Regular backups (offline/immutable)</li>
+                        <li>Email filtering/anti-phishing</li>
+                        <li>Patch management program</li>
+                        <li>Incident response plan</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-blue">
+                    <h4>⭐ Preferred Controls</h4>
+                    <p style="margin-top: 10px; font-size: 16px;">Can significantly improve pricing:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Security Awareness Training</li>
+                        <li>Privileged Access Management</li>
+                        <li>Network segmentation</li>
+                        <li>Vulnerability scanning</li>
+                        <li>SIEM/Log monitoring</li>
+                        <li>Cybersecurity assessment (annual)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 19: COST REDUCTION SUMMARY -->
+        <div class="slide">
+            <h2>Security Investment = Premium Savings</h2>
+            
+            <div class="highlight-box">
+                <strong>Real-World Impact:</strong> Health centers implementing all recommended controls typically see 30-50% premium reductions compared to organizations with minimal security.
+            </div>
+            
+            <h3 style="margin-top: 30px;">ROI on Security Controls</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Security Control</th>
+                        <th>Annual Cost</th>
+                        <th>Premium Impact</th>
+                        <th>Break-Even</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MFA Implementation</td>
+                        <td>$3K-$8K</td>
+                        <td>15-20% reduction</td>
+                        <td>Immediate</td>
+                    </tr>
+                    <tr>
+                        <td>EDR Solution</td>
+                        <td>$10K-$25K</td>
+                        <td>10-15% reduction</td>
+                        <td>1-2 years</td>
+                    </tr>
+                    <tr>
+                        <td>Enhanced Email Security</td>
+                        <td>$5K-$15K</td>
+                        <td>5-10% reduction</td>
+                        <td>1-2 years</td>
+                    </tr>
+                    <tr>
+                        <td>Security Awareness Training</td>
+                        <td>$3K-$8K</td>
+                        <td>5-8% reduction</td>
+                        <td>1-2 years</td>
+                    </tr>
+                    <tr>
+                        <td>Backup Solution (improved)</td>
+                        <td>$8K-$20K</td>
+                        <td>8-12% reduction</td>
+                        <td>1-2 years</td>
+                    </tr>
+                    <tr style="background: #dbeafe; font-weight: bold;">
+                        <td>TOTAL INVESTMENT</td>
+                        <td>$29K-$76K</td>
+                        <td>30-50% reduction</td>
+                        <td>Positive ROI Year 1</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="card card-green" style="margin-top: 30px;">
+                <h4>Additional Benefits Beyond Premium Savings:</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Reduced likelihood of successful cyber attack</li>
+                    <li>Lower incident response costs if breach occurs</li>
+                    <li>Faster recovery from incidents</li>
+                    <li>HIPAA compliance improvements</li>
+                    <li>Better coverage terms and higher limits available</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- SLIDE 24: RENEWAL PRESENTATION -->
+        <div class="slide">
+            <h2>How to Present Yourself at Renewal After a Claim</h2>
+            
+            <h3>The Remediation Narrative</h3>
+            <p style="font-size: 18px; margin-top: 10px;">Carriers want to see that you learned from the incident and are now a better risk. Structure your renewal narrative in three parts:</p>
+            
+            <div class="card card-green" style="margin: 25px 0;">
+                <h4>Part 1: Transparent Accountability</h4>
+                <p style="margin-top: 10px;"><em>"Here's what happened and what we learned"</em></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Brief, factual summary of incident</li>
+                    <li>Root cause analysis</li>
+                    <li>Security gaps identified</li>
+                    <li>Acknowledgment of what should have been in place</li>
+                    <li><strong>Tone:</strong> Professional, candid, learning-focused</li>
+                </ul>
+            </div>
+            
+            <div class="card card-blue" style="margin: 25px 0;">
+                <h4>Part 2: Comprehensive Remediation</h4>
+                <p style="margin-top: 10px;"><em>"Here's exactly what we fixed and when"</em></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Timeline of improvements</strong> with specific dates</li>
+                    <li><strong>Before/After comparison</strong> of security posture</li>
+                    <li><strong>Evidence:</strong> Screenshots, vendor contracts, assessment reports</li>
+                    <li><strong>Third-party validation:</strong> Security assessments, penetration tests</li>
+                    <li><strong>Investment amount:</strong> Show financial commitment to security</li>
+                </ul>
+            </div>
+            
+            <div class="card card-green" style="margin: 25px 0;">
+                <h4>Part 3: Ongoing Commitment</h4>
+                <p style="margin-top: 10px;"><em>"Here's our security program going forward"</em></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Board/leadership commitment to cybersecurity</li>
+                    <li>Annual security budget established</li>
+                    <li>Quarterly security meetings scheduled</li>
+                    <li>Ongoing monitoring and assessment program</li>
+                    <li>Security roadmap for next 12-24 months</li>
+                </ul>
+            </div>
+        </div>
+
+            <!-- SLIDE 2: KEY TAKEAWAYS SLIDE 1 -->
+        <div class="slide">
+            <h2>Key Takeaways: Your Action Plan</h2>
+            
+            <div class="grid-2" style="margin-top: 30px;">
+                <div class="card card-blue">
+                    <h3>1. Insurance Coverage Priorities</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li>Minimum $2M-$5M total coverage</li>
+                        <li><strong>CRITICAL:</strong> CBI sublimits $500K-$2M</li>
+                        <li><strong>CRITICAL:</strong> Ensure Wrongful Collection coverage</li>
+                        <li>Verify ransomware sublimits</li>
+                        <li>Negotiate waiting periods under 8 hours</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-blue">
+                    <h3>2. Essential Security Controls</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li>MFA on ALL systems</li>
+                        <li>Deploy EDR solution</li>
+                        <li>Offline/immutable backups</li>
+                        <li>Test backups quarterly</li>
+                        <li>Advanced email security</li>
+                        <li>30-day patch management</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-green">
+                    <h3>3. Third-Party Risk Management</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li>Inventory ALL vendors with PHI access</li>
+                        <li>Risk-tier and require questionnaires</li>
+                        <li>Strong contract security requirements</li>
+                        <li>Verify vendor cyber insurance</li>
+                        <li>24-hour breach notification</li>
+                        <li>Annual vendor security reviews</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-green">
+                    <h3>4. Incident Preparedness</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li>Document incident response plan</li>
+                        <li>Know carrier's 24/7 hotline</li>
+                        <li>Annual tabletop exercises</li>
+                        <li>Quarterly security training</li>
+                        <li>Run simulated phishing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: KEY TAKEAWAYS SLIDE 2 -->
+        <div class="slide">
+            <h2>Key Takeaways (Continued)</h2>
+            
+            <div class="grid-2">
+                <div class="card card-yellow">
+                    <h3>5. Cost Optimization</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li>Implement controls 6-12 months before renewal</li>
+                        <li>Document ALL security investments</li>
+                        <li>Get third-party assessments</li>
+                        <li>Bundle policies for discounts</li>
+                        <li>Consider higher deductibles</li>
+                        <li>Start renewal 120 days early</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-yellow">
+                    <h3>6. Immediate Actions</h3>
+                    <ul class="icon-list" style="margin-left: 0; margin-top: 15px;">
+                        <li><strong>Audit:</strong> Review CBI and Wrongful Collection coverage</li>
+                        <li><strong>Audit:</strong> Check tracking pixels</li>
+                        <li><strong>Verify:</strong> MFA enabled</li>
+                        <li><strong>Verify:</strong> Patching Up to Date</li>
+                        <li><strong>Test:</strong> Backup restoration</li>
+                        <li><strong>Document:</strong> Vendor inventory</li>
+                        <li><strong>Schedule:</strong> Staff training</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-red" style="grid-column: span 2;">
+                    <h3>7. Critical Warnings</h3>
+                    <ul class="warning-list" style="margin-left: 0; margin-top: 15px;">
+                        <li><strong>Do NOT</strong> assume vendor-caused interruption is covered</li>
+                        <li><strong>Do NOT</strong> wait until incident to understand coverage</li>
+                        <li><strong>Do NOT</strong> engage vendors before calling carrier</li>
+                        <li><strong>Do NOT</strong> sign contracts without security requirements</li>
+                        <li><strong>Do NOT</strong> skip backup testing</li>
+                        <li><strong>Do NOT</strong> assume small size means lower risk</li>
+                        <li><strong>Do NOT</strong> rely solely on vendor security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: THANK YOU -->
+        <div class="slide">
+            <div class="center" style="padding-top: 100px;">
+                 <img src="https://seedpodcyber.com/wp-content/uploads/2024/10/SeedPod_Logo__2_color_w_Tag-copy-1.png" alt="SeedPod Cyber Logo" style="width:300px;height:auto;">
+                
+                <h2 style="font-size: 60px; color: #009D4F; margin-top: 60px;">Thank You!</h2>
+                
+                <div style="margin-top: 60px; background: #EBE9F3; padding: 60px; border-radius: 12px; border-left: 6px solid #009D4F; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 36px; color: #013220; font-weight: 700; margin-bottom: 15px;">Doug Kreitzberg</p>
+                    <p style="font-size: 26px; color: #353535; margin-bottom: 10px;">Chief Executive Officer</p>
+                    <p style="font-size: 26px; color: #353535; margin-bottom: 35px;">SeedPod Cyber</p>
+                    <div style="border-top: 2px solid #009D4F; padding-top: 25px;">
+                        <a href="mailto:doug.kreitzberg@seedpodcyber.com" style="font-size: 28px; color: #009D4F; text-decoration: none; font-weight: 600;">doug.kreitzberg@seedpodcyber.com</a>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 70px;">
+                    <p style="font-size: 22px; color: #4b5563; line-height: 1.8; max-width: 900px; margin: 0 auto;">
+                        For questions about cyber insurance coverage, security assessments,<br>
+                        or risk management strategies for your health center,<br>
+                        please don't hesitate to reach out.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">0</span>
+        </div>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <div class="click-hint" id="clickHint">
+        Use ← → arrows or click Next
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlidesElement = document.getElementById('totalSlides');
+        const currentSlideElement = document.getElementById('currentSlide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const clickHint = document.getElementById('clickHint');
+
+        // Initialize
+        totalSlidesElement.textContent = slides.length;
+        showSlide(0);
+
+        // Hide hint after 5 seconds
+        setTimeout(() => {
+            clickHint.style.display = 'none';
+        }, 5000);
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Show current slide
+            slides[index].classList.add('active');
+            
+            // Update counter
+            currentSlideElement.textContent = index + 1;
+            
+            // Update button states
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === slides.length - 1;
+            
+            // Scroll to top of slide
+            slides[index].scrollTop = 0;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentSlideIndex = 0;
+                showSlide(currentSlideIndex);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentSlideIndex = slides.length - 1;
+                showSlide(currentSlideIndex);
+            }
+        });
+
+        // Click on right side to advance, left side to go back
+        document.addEventListener('click', (e) => {
+            // Don't trigger on button clicks
+            if (e.target.closest('.nav-controls')) return;
+            
+            const windowWidth = window.innerWidth;
+            const clickX = e.clientX;
+            
+            if (clickX > windowWidth * 0.6) {
+                nextSlide();
+            } else if (clickX < windowWidth * 0.4) {
+                previousSlide();
+            }
+        });
+    </script>
+</body>
+</html>
